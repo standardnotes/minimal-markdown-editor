@@ -9,3 +9,5 @@ dist/app.css
 dist/app.css.map
 
 .DS_Store
+
+.sass-cache
