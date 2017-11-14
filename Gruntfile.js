@@ -10,6 +10,13 @@ module.exports = function(grunt) {
         spawn: false,
       },
     },
+    css: {
+      files: ['src/main.scss'],
+      tasks: ['sass', 'concat:css'],
+      options: {
+        spawn: false,
+      },
+    }
   },
 
   sass: {
@@ -48,6 +55,7 @@ module.exports = function(grunt) {
       options: {
         separator: ';',
       },
+
       app: {
         src: [
           'src/**/*.js',
@@ -70,7 +78,10 @@ module.exports = function(grunt) {
       },
 
       css: {
-        src: ['dist/app.css', 'node_modules/codemirror/lib/codemirror.css'],
+        options: {
+          separator: '',
+        },
+        src: ['node_modules/codemirror/lib/codemirror.css', 'dist/app.css'],
         dest: 'dist/dist.css',
       }
     },
