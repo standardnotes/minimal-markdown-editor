@@ -10860,7 +10860,8 @@ CodeMirror.defineMIME("text/x-markdown", "markdown");
 document.addEventListener("DOMContentLoaded", function (event) {
 
   var componentManager;
-  var workingNote, clientData, lastValue;
+  var workingNote, clientData;
+  var lastValue, lastUUID;
   var editor;
   var ignoreTextChange = false;
   var initialLoad = true;
@@ -10886,6 +10887,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   function onReceivedNote(note) {
+    if (note.uuid !== lastUUID) {
+      // Note changed, reset last values
+      lastValue = null;
+      initialLoad = true;
+      lastUUID = note.uuid;
+    }
+
     workingNote = note;
 
     // Only update UI on non-metadata updates.
