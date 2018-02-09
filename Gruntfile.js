@@ -67,7 +67,8 @@ module.exports = function(grunt) {
         src: [
           'node_modules/codemirror/lib/codemirror.js',
           'node_modules/sn-components-api/dist/dist.js',
-          'vendor/modes/markdown/markdown.js'
+          'vendor/modes/markdown/markdown.js',
+          'vendor/mark-selection.js'
         ],
         dest: 'dist/lib.js',
       },

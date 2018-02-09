@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
   function loadEditor() {
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
       mode: "markdown",
-      lineWrapping: true
+      lineWrapping: true,
+      styleSelectedText: true
     });
     editor.setSize("100%", "100%");
 

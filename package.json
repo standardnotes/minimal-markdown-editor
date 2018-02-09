@@ -1,6 +1,6 @@
 {
   "name": "sn-minimal-markdown-editor",
-  "version": "1.0.132",
+  "version": "1.0.14",
   "description": "",
   "main": "dist/dist.js",
   "author": "Standard Notes <hello@standardnotes.org>",
