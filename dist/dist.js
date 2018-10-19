@@ -9933,18 +9933,21 @@ var ComponentManager = function () {
     }
   }, {
     key: "deleteItem",
-    value: function deleteItem(item) {
-      this.deleteItems([item]);
+    value: function deleteItem(item, callback) {
+      this.deleteItems([item], callback);
     }
   }, {
     key: "deleteItems",
-    value: function deleteItems(items) {
+    value: function deleteItems(items, callback) {
       var params = {
         items: items.map(function (item) {
           return this.jsonObjectForItem(item);
         }.bind(this))
       };
-      this.postMessage("delete-items", params);
+
+      this.postMessage("delete-items", params, function (data) {
+        callback && callback(data);
+      });
     }
   }, {
     key: "sendCustomEvent",
@@ -9961,6 +9964,22 @@ var ComponentManager = function () {
       this.saveItems([item], callback, skipDebouncer);
     }
 
+    /* Presave allows clients to perform any actions last second before the save actually occurs (like setting previews).
+       Saves debounce by default, so if a client needs to compute a property on an item before saving, it's best to
+       hook into the debounce cycle so that clients don't have to implement their own debouncing.
+     */
+
+  }, {
+    key: "saveItemWithPresave",
+    value: function saveItemWithPresave(item, presave, callback) {
+      this.saveItemsWithPresave([item], presave, callback);
+    }
+  }, {
+    key: "saveItemsWithPresave",
+    value: function saveItemsWithPresave(items, presave, callback) {
+      this.saveItems(items, callback, false, presave);
+    }
+
     /*
     skipDebouncer allows saves to go through right away rather than waiting for timeout.
     This should be used when saving items via other means besides keystrokes.
@@ -9972,6 +9991,7 @@ var ComponentManager = function () {
       var _this3 = this;
 
       var skipDebouncer = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      var presave = arguments[3];
 
       items = items.map(function (item) {
         item.updated_at = new Date();
@@ -9979,6 +9999,8 @@ var ComponentManager = function () {
       }.bind(this));
 
       var saveBlock = function saveBlock() {
+        // presave block allows client to gain the benefit of performing something in the debounce cycle.
+        presave && presave();
         _this3.postMessage("save-items", { items: items }, function (data) {
           callback && callback();
         });
@@ -10078,14 +10100,36 @@ var ComponentManager = function () {
   }, {
     key: "deactivateAllCustomThemes",
     value: function deactivateAllCustomThemes() {
-      var elements = document.getElementsByClassName("custom-theme");
+      // make copy, as it will be modified during loop
+      // `getElementsByClassName` is an HTMLCollection, not an Array
+      var elements = Array.from(document.getElementsByClassName("custom-theme")).slice();
+      var _iteratorNormalCompletion3 = true;
+      var _didIteratorError3 = false;
+      var _iteratorError3 = undefined;
 
-      [].forEach.call(elements, function (element) {
-        if (element) {
-          element.disabled = true;
-          element.parentNode.removeChild(element);
+      try {
+        for (var _iterator3 = elements[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+          var element = _step3.value;
+
+          if (element) {
+            element.disabled = true;
+            element.parentNode.removeChild(element);
+          }
         }
-      });
+      } catch (err) {
+        _didIteratorError3 = true;
+        _iteratorError3 = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion3 && _iterator3.return) {
+            _iterator3.return();
+          }
+        } finally {
+          if (_didIteratorError3) {
+            throw _iteratorError3;
+          }
+        }
+      }
     }
 
     /* Utilities */
@@ -11090,10 +11134,15 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
   function save() {
     if (workingNote) {
-      lastValue = editor.getValue();
-      workingNote.content.text = lastValue;
-      workingNote.clientData = clientData;
-      componentManager.saveItem(workingNote);
+      componentManager.saveItemWithPresave(workingNote, function () {
+        lastValue = editor.getValue();
+        workingNote.content.text = lastValue;
+        workingNote.clientData = clientData;
+
+        // clear previews
+        workingNote.content.preview_plain = null;
+        workingNote.content.preview_html = null;
+      });
     }
   }
 
