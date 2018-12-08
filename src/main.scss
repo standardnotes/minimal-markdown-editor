@@ -54,7 +54,8 @@ body, html {
     color: var(--sn-stylekit-info-color) !important;
   }
 
-  .CodeMirror-linenumber { color: gray !important;
+  .CodeMirror-linenumber {
+    color: gray !important;
   }
 
 }
@@ -77,23 +78,14 @@ body, html {
   border-color: var(--sn-stylekit-border-color) !important;
 }
 
-// .CodeMirror .cm-header {
-//   font-family: sans-serif;
-// }
 .cm-header-1 { font-size: 150%; }
 .cm-header-2 { font-size: 130%; }
 .cm-header-3 { font-size: 120%; }
 .cm-header-4 { font-size: 110%; }
 .cm-header-5 { font-size: 100%; }
 .cm-header-6 { font-size: 90%; }
-//
+
 .CodeMirror .cm-quote {
   color: var(--sn-stylekit-foreground-color);
   opacity: 0.6;
 }
-//
-// .cm-variable-2,
-// .cm-variable-3,
-// .CodeMirror .cm-keyword {
-//   color: black;
-// }
