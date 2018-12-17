@@ -18,6 +18,7 @@ body, html {
   background-color: var(--sn-stylekit-editor-background-color) !important;
   color: var(--sn-stylekit-editor-foreground-color) !important;
   border: 0 !important;
+  font-family: sans-serif;
 
   flex: 1 1 auto;
   width: 100%;
@@ -30,7 +31,7 @@ body, html {
   .CodeMirror-code .cm-comment {
     background: var(--sn-stylekit-contrast-background-color);
     color: var(--sn-stylekit-info-color);
-    font-family: Consolas,monaco,"Ubuntu Mono",courier,monospace!important;
+    font-family: Consolas, monaco, "Ubuntu Mono", courier, monospace !important;
     font-size: 90%; // font-family makes font look a bit big
   }
 
