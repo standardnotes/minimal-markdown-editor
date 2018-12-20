@@ -59,7 +59,7 @@ body, html {
 }
 
 .CodeMirror-cursor {
-  border-color: white;
+  border-color: var(--sn-stylekit-editor-foreground-color-color);
 }
 
 .CodeMirror-selected {
@@ -67,7 +67,7 @@ body, html {
 }
 
 .CodeMirror-selectedtext {
-  color: white;
+  color: var(--sn-stylekit-info-contrast-color) !important;
 }
 
 .CodeMirror-gutters {
