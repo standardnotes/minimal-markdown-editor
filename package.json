@@ -1,10 +1,12 @@
 {
   "name": "sn-minimal-markdown-editor",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "",
   "main": "dist/dist.js",
   "author": "Standard Notes <hello@standardnotes.org>",
-  "dependencies": {},
+  "dependencies": {
+    "sn-codemirror-search": "1.0.0"
+  },
   "devDependencies": {
     "codemirror": "^5.41.0",
     "sn-components-api": "1.2.3",

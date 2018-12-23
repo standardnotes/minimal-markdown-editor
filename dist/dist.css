@@ -782,6 +782,7 @@ span.CodeMirror-selectedtext { background: none; }
   resize: none;
 }
 .sn-component input.sk-input.clear {
+  color: var(--sn-stylekit-foreground-color);
   background-color: transparent;
   border: none;
 }
@@ -2229,7 +2230,10 @@ body, html {
   position: relative;
   height: 100%;
   overflow: hidden;
-  padding-right: 20px;
+}
+
+.CodeMirror-scroll {
+  padding: 8px;
 }
 
 .CodeMirror {
@@ -2243,14 +2247,17 @@ body, html {
   height: 100%;
   resize: none;
   font-size: var(--sn-stylekit-font-size-editor);
-  padding: 15px;
-  padding: 8px;
+  padding: 0;
 }
 .CodeMirror .CodeMirror-code .cm-comment {
   background: var(--sn-stylekit-contrast-background-color);
   color: var(--sn-stylekit-info-color);
   font-family: Consolas, monaco, "Ubuntu Mono", courier, monospace !important;
   font-size: 90%;
+}
+.CodeMirror .CodeMirror-code .cm-comment.CodeMirror-selectedtext {
+  color: var(--sn-stylekit-info-contrast-color) !important;
+  background: transparent;
 }
 .CodeMirror .cm-header {
   color: var(--sn-stylekit-editor-foreground-color);
@@ -2261,8 +2268,16 @@ body, html {
 .CodeMirror .cm-variable-2 {
   color: var(--sn-stylekit-info-color) !important;
 }
+.CodeMirror .cm-variable-2.CodeMirror-selectedtext {
+  color: var(--sn-stylekit-info-contrast-color) !important;
+  background: transparent;
+}
 .CodeMirror .cm-link, .CodeMirror .cm-string, .CodeMirror .cm-keyword {
   color: var(--sn-stylekit-info-color) !important;
+}
+.CodeMirror .cm-link.CodeMirror-selectedtext, .CodeMirror .cm-string.CodeMirror-selectedtext, .CodeMirror .cm-keyword.CodeMirror-selectedtext {
+  color: var(--sn-stylekit-info-contrast-color) !important;
+  background: transparent;
 }
 .CodeMirror .CodeMirror-linenumber {
   color: gray !important;

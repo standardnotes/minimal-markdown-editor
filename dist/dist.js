@@ -11389,7 +11389,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
       mode: "markdown",
       lineWrapping: true,
-      styleSelectedText: true
+      styleSelectedText: true,
+      extraKeys: { "Alt-F": "findPersistent" }
     });
     editor.setSize("100%", "100%");
 
