@@ -86,6 +86,13 @@ module.exports = function(grunt) {
         dest: 'dist/dist.css',
       }
     },
+    copy: {
+      main: {
+        files: [
+          {expand: true, cwd: 'node_modules/',  src: ['sn-codemirror-search/**'], dest: 'dist/'},
+        ],
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-newer');
@@ -94,6 +101,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  grunt.registerTask('default', ['concat:app', 'babel', 'browserify', 'concat:lib', 'concat:dist', 'sass', 'concat:css']);
+  grunt.registerTask('default', ['concat:app', 'babel', 'browserify', 'concat:lib', 'concat:dist', 'sass', 'concat:css', 'copy']);
 };
