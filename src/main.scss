@@ -3,6 +3,12 @@ body, html {
   font-size: var(--sn-stylekit-base-font-size);
   height: 100%;
   margin: 0;
+  background-color: transparent;
+}
+
+* {
+  // To prevent gray flash when focusing input on mobile Safari
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 #wrapper {
@@ -41,12 +47,17 @@ body, html {
 
     &.CodeMirror-selectedtext {
       color: var(--sn-stylekit-info-contrast-color) !important;
-      background: transparent;
+      background: var(--sn-stylekit-info-color) !important;
     }
   }
 
   .cm-header {
     color: var(--sn-stylekit-editor-foreground-color);
+
+    &.CodeMirror-selectedtext {
+      color: var(--sn-stylekit-info-contrast-color) !important;
+      background: var(--sn-stylekit-info-color) !important;
+    }
   }
 
   // Faded Markdown syntax
@@ -68,7 +79,7 @@ body, html {
 
     &.CodeMirror-selectedtext {
       color: var(--sn-stylekit-info-contrast-color) !important;
-      background: transparent;
+      background: var(--sn-stylekit-info-color) !important;
     }
   }
 
@@ -79,7 +90,7 @@ body, html {
 }
 
 .CodeMirror-cursor {
-  border-color: var(--sn-stylekit-editor-foreground-color-color);
+  border-color: var(--sn-stylekit-editor-foreground-color);
 }
 
 .CodeMirror-selected {
@@ -88,6 +99,7 @@ body, html {
 
 .CodeMirror-selectedtext {
   color: var(--sn-stylekit-info-contrast-color) !important;
+  background: var(--sn-stylekit-info-color) !important;
 }
 
 .CodeMirror-gutters {

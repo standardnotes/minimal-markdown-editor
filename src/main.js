@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       if (platform) {
         document.body.classList.add(platform);
       }
+
+      // only use CodeMirror selection color if we're not on mobile.
+      editor.setOption("styleSelectedText", !componentManager.isMobile);
     });
 
     componentManager.streamContextItem((note) => {
@@ -76,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
       mode: "markdown",
       lineWrapping: true,
-      styleSelectedText: true,
       extraKeys: {"Alt-F": "findPersistent"}
     });
     editor.setSize("100%", "100%");
