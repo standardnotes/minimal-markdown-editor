@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   function loadEditor() {
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-      mode: "markdown",
+      mode: "gfm",
       lineWrapping: true,
       extraKeys: {"Alt-F": "findPersistent"}
     });
