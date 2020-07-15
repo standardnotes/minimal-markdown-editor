@@ -408,7 +408,7 @@ body, html {
   opacity: 0.2;
 }
 .CodeMirror .cm-variable-2 {
-  color: var(--sn-stylekit-neutral-color) !important;
+  color: var(--sn-stylekit-info-color) !important;
 }
 .CodeMirror .cm-variable-2.CodeMirror-selectedtext {
   color: var(--sn-stylekit-info-contrast-color) !important;
