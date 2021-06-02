@@ -483,3 +483,7 @@ html {
   color: var(--sn-stylekit-foreground-color);
   opacity: 0.6;
 }
+
+.CodeMirror .cm-s-default .cm-variable-3 {
+  color: var(--sn-stylekit-success-color) !important;
+}
