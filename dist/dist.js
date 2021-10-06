@@ -11807,7 +11807,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
       lineWrapping: true,
       extraKeys: {
         "Alt-F": "findPersistent"
-      }
+      },
+
+      /**
+       * The "contenteditable" input model has issues on Mobile (Android). E.g: the cursor
+       * moves to the next line for just a split second, then returns to the previous line.
+       */
+      inputStyle: 'textarea'
     });
     editor.setSize(undefined, "100%");
     editor.on("change", function () {
