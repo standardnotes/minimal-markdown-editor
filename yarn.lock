@@ -868,6 +868,11 @@
     "@babel/helper-validator-identifier" "^7.14.0"
     to-fast-properties "^2.0.0"
 
+"@standardnotes/component-relay@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@standardnotes/component-relay/-/component-relay-2.2.0.tgz#3b51e1047997e624594c8bce00c38e73d49cfb8f"
+  integrity sha512-cJMSnT/fREYK1zq/U6aSfxWPiLPhzI1sLNDUMhmZnJ2npBKFeqE7qQj7NGdp4Q5f72yk4Oqevg5O2BxWDKpYHA==
+
 JSONStream@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-0.10.0.tgz#74349d0d89522b71f30f0a03ff9bd20ca6f12ac0"
@@ -4278,11 +4283,6 @@ sn-codemirror-search@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/sn-codemirror-search/-/sn-codemirror-search-1.0.0.tgz#13c06b2cead6a3670eabdbffadd69d839ea53c3f"
   integrity sha512-T8WAFgdhChF91ZHX2ELGy48kzulMgzwTWA5p1QqMHOZDbgi23i3XWflNzcwPdKw8Px0DIRwpJ6ffQfcft0LMbQ==
-
-sn-components-api@1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/sn-components-api/-/sn-components-api-1.2.8.tgz#5fbba6652c08d5b3e92502d782453c1520165721"
-  integrity sha512-epBFsQIKLK78SnJ6e5JNjYbdOAYbKzRyydjpAqji0WdX3S/tOD5Z3UVdLVyi4orKaM4322dk6nRJiTHMI1VyIw==
 
 sn-stylekit@2.1.0:
   version "2.1.0"
