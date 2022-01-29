@@ -75,6 +75,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
         initialLoad = false;
         editor.getDoc().clearHistory();
       }
+
+      editor.setOption(
+        "spellcheck",
+        JSON.stringify(workingNote.content.spellcheck)
+      );
     }
   }
 
@@ -82,7 +87,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     editor = CodeMirror.fromTextArea(document.getElementById("code"), {
       mode: "gfm",
       lineWrapping: true,
-      extraKeys: { "Alt-F": "findPersistent" }
+      extraKeys: { "Alt-F": "findPersistent" },
+      inputStyle: "contenteditable"
     });
     editor.setSize(undefined, "100%");
 
